@@ -5,7 +5,7 @@ var diceResult = document.getElementById('result');
 var diceBtn = document.getElementById('dice');
 var turn = 0;
 
-function loadCard(turn) {
+function loadCard(turn) { // add rarities
     fetch('/get-enemy', {
         method: 'POST',
         body: JSON.stringify({turn: turn}),
@@ -31,6 +31,7 @@ function rollTheDice() {
 }
 
 loadCard(turn);
+
 diceBtn.addEventListener('click',()=>{
     let result = rollTheDice();
     diceResult.innerHTML = result;
@@ -45,7 +46,7 @@ diceBtn.addEventListener('click',()=>{
         return response.json();
     })
     .then((data)=>{
-
+        // do something
     })
 });
 
