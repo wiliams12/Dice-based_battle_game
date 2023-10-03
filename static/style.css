@@ -1,3 +1,47 @@
+header {
+    height: 5%;
+    background-color: burlywood;
+    text-align: center;
+}
+
 body {
-    background-color: red;
+    background-color: lightgrey;
+}
+
+#card {
+    display: none;
+    width: 40vh;
+    height: 60vh;
+    margin: 0 auto;
+    background-color: burlywood;
+    text-align: center;
+}
+
+#power, #result {
+    font-size: 6vh;
+}
+
+#name {
+    margin:0;
+    background-color: aliceblue;
+}
+
+#image {
+    width: 96%;
+    padding: 2%;
+    margin:0
+}
+
+#dice {
+    display: none;
+    width: 40vh;
+    height: 20vh;
+    margin: 2vh auto;
+    background-color: burlywood;
+    text-align: center;
+}
+
+#dice button {
+    height: 30%;
+    width: 60%;
 }

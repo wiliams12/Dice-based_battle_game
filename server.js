@@ -1,21 +1,39 @@
-const http = require('http');
 const fs = require('fs');
+const sqlite3 = require('sqlite3');
 const express = require('express');
+const bodyParser = require('body-parser');
+
 const app = express();
 
 app.use(express.static('static'));
-// Doesn't work yet; doesn't load static files correctly
+
+app.use(bodyParser.json());
+
+const db = new sqlite3.Database('monsters.db', sqlite3.OPEN_READONLY);
+
+app.post('/get-enemy',(req,res)=>{
+  console.log(req.body['turn']);
+  res.json({
+    name:'Rat',
+    power: 1,
+    img: 'imgs/rat.jpg'
+  })
+});
+
+app.post('/fight',(req,res)=>{
+
+})
 
 app.get("/",(req,res)=>{
-    res.writeHead(200, {'Content-Type': 'text/html'});
-    fs.readFile('templates/index.html', function(err, data) {
-      if (err) {
-        res.writeHead(404);
-        res.end(err.message);
-      } else {
-        res.end(data);
-      }
-    });
+  fs.readFile('templates/index.html', (err, data) => {
+    if (err) {
+      console.error('problem loading the file');
+      res.status(500).send('Internal Server Error');
+    } else {
+      res.write(data);
+      res.end();
+    }
+  });
 });
 
 app.listen(8000, () => {
