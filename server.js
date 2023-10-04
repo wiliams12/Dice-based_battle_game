@@ -41,8 +41,11 @@ app.post('/get-enemy',(req,res)=>{
   let pBoss = turn;
   let pLeg = turn * 2;
   let pRare = turn * 3;
+  /*let pLeg = 0;
+  let pRare = 0;
+  let pBoss = 0;*/
   // Probability for common is 100 %
-  let randomNum = Math.floor(Math.random() * 10) + 1;
+  let randomNum = Math.floor(Math.random() * 100) + 1;
   if (randomNum <= pBoss) {
     fromDatabase('boss', res);
   }

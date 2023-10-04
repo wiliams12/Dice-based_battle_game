@@ -45,3 +45,31 @@ body {
     height: 30%;
     width: 60%;
 }
+
+#lost-box, #won-box {
+    display: none;
+    position: absolute;
+    top: 20vh;
+    height: 40vh;
+    width: 60vw;
+    background-color: whitesmoke;
+    margin: 0 20vw;
+    border: 3px solid black;
+    text-align: center;
+}
+
+.msg {
+    font-size: 12vh;
+}
+
+#game-lost, #game-won {
+    display: none;
+    position: absolute;
+    top: 5vh;
+    height: 90vh;
+    width: 90vw;
+    background-color: whitesmoke;
+    margin: 0 5vw;
+    border: 3px solid black;
+    text-align: center;
+}
