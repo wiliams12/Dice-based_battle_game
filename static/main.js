@@ -35,9 +35,12 @@ loadCard(turn);
 diceBtn.addEventListener('click',()=>{
     let result = rollTheDice();
     diceResult.innerHTML = result;
-    fetch('/fight',{
+    fetch('/fight',{ // useless fetch, could be done on frontend
         method: 'POST',
-        body: JSON.stringify({result: result}),
+        body: JSON.stringify({ // add weapons later on
+            result: result,
+            monsterPower: monsterPower.innerHTML
+        }),
         headers: {
             'Content-Type': 'application/json',
         }
@@ -46,7 +49,12 @@ diceBtn.addEventListener('click',()=>{
         return response.json();
     })
     .then((data)=>{
-        // do something
+        if (data.win) {
+            console.log('won');
+        }
+        else {
+            console.log('lost');
+        }
     })
 });
 
