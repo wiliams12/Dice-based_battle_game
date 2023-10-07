@@ -11,7 +11,7 @@ var continueBtns = document.querySelectorAll('.continue');
 var turn = 0;
 var lives = 3;
 
-function loadCard(turn) { // add rarities
+function loadCard(turn) {
     fetch('/get-enemy', {
         method: 'POST',
         body: JSON.stringify({turn: turn}),
@@ -26,6 +26,10 @@ function loadCard(turn) { // add rarities
         monsterName.innerHTML = data.name;
         monsterPower.innerHTML = data.power;
         monsterImg.src = data.img;
+        if (data.rarity === 'common') card.style.backgroundColor = 'lightgray'
+        else if (data.rarity === 'rare') card.style.backgroundColor = 'lightblue'
+        else if (data.rarity === 'legendary') card.style.backgroundColor = 'yellow'
+        else card.style.backgroundColor = 'crimson'
         document.getElementById('card').style.display = 'block';
         document
         .getElementById('dice').style.display = 'block';

@@ -1,11 +1,11 @@
 header {
     height: 5%;
-    background-color: burlywood;
+    background-color: whitesmoke;
     text-align: center;
 }
 
 body {
-    background-color: lightgrey;
+    background-color: darkslategray;
 }
 
 #card {
@@ -13,7 +13,7 @@ body {
     width: 40vh;
     height: 60vh;
     margin: 0 auto;
-    background-color: burlywood;
+    background-color: white;
     text-align: center;
 }
 
@@ -23,7 +23,7 @@ body {
 
 #name {
     margin:0;
-    background-color: aliceblue;
+    background-color: whitesmoke;
 }
 
 #image {
@@ -37,7 +37,7 @@ body {
     width: 40vh;
     height: 20vh;
     margin: 2vh auto;
-    background-color: burlywood;
+    background-color: white;
     text-align: center;
 }
 
