@@ -40,12 +40,12 @@ app.post('/get-enemy',(req,res)=>{
   let turn = req.body['turn'];
   let pBoss = turn;
   let pLeg = turn * 3;
-  let pRare = turn * 8 + 20;
+  let pRare = turn * 5 + 20;
   let randomNum = Math.floor(Math.random() * 100) + 1;
-  if (randomNum <= pBoss && turn >= 14) {
+  if (randomNum <= pBoss && turn >= 16) {
     fromDatabase('boss', res);
   }
-  else if (randomNum <= pLeg && turn >= 7) {
+  else if (randomNum <= pLeg && turn >= 12) {
     fromDatabase('legendary', res);
   }
   else if (randomNum <= pRare && turn >= 3) {
@@ -103,6 +103,18 @@ app.post('/reward',(req,res)=>{
     dice: dice,
     msg: msg
   })
+});
+
+app.get('/about', (req,res)=>{
+  fs.readFile('templates/about.html', (err, data) => {
+    if (err) {
+      console.error('problem loading the file');
+      res.status(500).send('Internal Server Error');
+    } else {
+      res.write(data);
+      res.end();
+    }
+  });
 });
 
 app.get('/',(req,res)=>{

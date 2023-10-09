@@ -14,6 +14,7 @@ var turn = 0;
 var lives = 3;
 var scndDice = 0;
 var weapon = 0;
+var pressed = false;
 
 function updateInfo() {
     document.getElementById('lives').innerHTML = 'Lives: '+lives;
@@ -47,11 +48,21 @@ function loadCard(turn) {
         .getElementById('dice').style.display = 'block';
     });
 }
+console.log(window.location.href);
+if (window.location.href == 'http://localhost:8000/'){
+    loadCard(turn);
+    updateInfo();
+    diceBtn.addEventListener('click',()=>{
+        fight();
+    });
+    continueBtns.forEach((btn)=>{
+        btn.addEventListener('click', ()=>{
+            continueThePlay();
+        });
+    });
+}
 
-loadCard(turn);
-updateInfo();
-
-diceBtn.addEventListener('click',()=>{
+function fight() {
     diceBtn.style.visibility = 'hidden';
     fetch('/fight',{
         method: 'POST',
@@ -130,26 +141,34 @@ diceBtn.addEventListener('click',()=>{
             },900)
         }
     })
-});
-continueBtns.forEach((btn)=>{
-    btn.addEventListener('click', ()=>{
-        turn ++;
-        updateInfo();
-        if (lives > 0) {
-            loadCard(turn);
-            card.style.display = 'block';
-            diceDiv.style.display = 'block';
-            lostBox.style.display = 'none';
-            wonBox.style.display = 'none';
-            drawBox.style.display = 'none';
-            diceBtn.style.visibility = 'visible';
-            diceResult.innerHTML = '';
-        }
-        else {
-            card.style.display = 'none';
-            diceDiv.style.display = 'none';
-            document.getElementById('game-lost').style.display = 'block';
-        }
-    });
+    pressed = false;
+}
 
+function continueThePlay() {
+    turn ++;
+    updateInfo();
+    if (lives > 0) {
+        loadCard(turn);
+        card.style.display = 'block';
+        diceDiv.style.display = 'block';
+        lostBox.style.display = 'none';
+        wonBox.style.display = 'none';
+        drawBox.style.display = 'none';
+        diceBtn.style.visibility = 'visible';
+        diceResult.innerHTML = '';
+    }
+    else {
+        card.style.display = 'none';
+        diceDiv.style.display = 'none';
+        document.getElementById('game-lost').style.display = 'block';
+    }
+    pressed = false;
+}
+
+document.getElementById('home').addEventListener('click', ()=>{
+    window.location.href = 'http://localhost:8000';
+});
+
+document.getElementById('about').addEventListener('click', ()=>{
+    window.location.href = 'http://localhost:8000/about';
 });

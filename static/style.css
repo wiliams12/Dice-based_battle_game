@@ -1,7 +1,11 @@
 header {
-    height: 5%;
+    height: 50px;
     background-color: whitesmoke;
     text-align: center;
+}
+
+header h1 {
+    margin: 0;
 }
 
 body {
@@ -13,8 +17,10 @@ body {
     width: 40vh;
     height: 60vh;
     margin: 0 auto;
+    margin-top: 35px;
     background-color: white;
     text-align: center;
+    border-radius: 25px;
 }
 
 #power, #result {
@@ -29,7 +35,10 @@ body {
 #image {
     width: 96%;
     padding: 2%;
-    margin:0
+    margin:0;
+    border-radius: 10px;
+    border-top-right-radius: 25px;
+    border-top-left-radius: 25px;
 }
 
 #dice {
@@ -39,11 +48,24 @@ body {
     margin: 2vh auto;
     background-color: white;
     text-align: center;
+    border-radius: 25px;
 }
 
 #dice button {
-    height: 30%;
-    width: 60%;
+    height: 60px;
+    width: 120px;
+    font-size: large;
+    border-radius: 10px;
+    border: 2px solid black;
+    margin-top: 5%;
+}
+
+#home,#about {
+    font-size: large;
+    height: 60px;
+    width: 120px;
+    padding: 0;
+    float: right;
 }
 
 #lost-box, #won-box, #draw-box {
@@ -77,5 +99,18 @@ body {
 
 #info {
     color: whitesmoke;
-    float: left;
+    position: absolute;
+    left: 25px;
+    top: 50px
+}
+
+.title {
+    margin-left: 10vw;
+    color: whitesmoke;
+    font-size: xx-large;
+}
+
+.txt {
+    margin-left: 10vw;
+    color: whitesmoke;
 }
